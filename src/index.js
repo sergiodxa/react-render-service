@@ -1,6 +1,6 @@
 import { createFactory } from 'react';
 import { renderToString } from 'react-dom/server';
-import path from 'path';
+import { resolve } from 'path';
 import {
   json,
   send,
@@ -20,11 +20,11 @@ export default async function renderService(request, response) {
 
   try {
     const {
-      component = '',
+      component,
       data = '{}',
     } = await json(request);
 
-    const Component = require(path.resolve(component));
+    const Component = require(resolve(component));
 
     const html = renderToString(
       createFactory(Component)(JSON.parse(data))
@@ -32,7 +32,7 @@ export default async function renderService(request, response) {
 
     send(response, 200, html);
   } catch (error) {
-    console.error(error);
+    process.stderr.write('Error:', error + '\n');
     sendError(request, response, error);
   }
 }
