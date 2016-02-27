@@ -1,0 +1,23 @@
+{
+  "name": "react-render-service",
+  "version": "1.0.0",
+  "description": "React Render as a Service",
+  "main": "index.js",
+  "scripts": {
+    "start": "micro -p 3000 ./src/index.js",
+    "test": "node test/index.js"
+  },
+  "author": "Sergio Daniel Xalambrí <sergio@xalambri.com.ar> (http://sergio.xalambri.com.ar/)",
+  "license": "MIT",
+  "dependencies": {
+    "micro": "1.0.4",
+    "react": "0.14.7",
+    "react-dom": "0.14.7"
+  },
+  "devDependencies": {
+    "cheerio": "0.20.0",
+    "superagent": "1.8.0-beta.1",
+    "superagent-as-promised": "3.2.1",
+    "tape": "4.4.0"
+  }
+}
