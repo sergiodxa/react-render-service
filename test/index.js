@@ -13,10 +13,12 @@ test('Render service', t => {
       component: './test/HelloWorld.js',
     })
     .then(response => {
+      process.stdout.write('Rendered HTML:', response.text + '\n');
+
       t.equal(
         cheerio.load(response.text)('h1').text(),
         expectedResult
       );
     })
-    .catch(error => t.error(error));
+    .catch(error => t.fail('The test failed'));
 });
