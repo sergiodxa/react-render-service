@@ -13,7 +13,7 @@ test('Render service', t => {
       component: './test/HelloWorld.js',
     })
     .then(response => {
-      process.stdout.write('Rendered HTML:', response.text + '\n');
+      process.stdout.write('Rendered HTML: ' + response.text + '\n');
 
       t.equal(
         cheerio.load(response.text)('h1').text(),
